@@ -12,16 +12,23 @@
       balls[i] = new Ball();
     }
   }
-  
+
   void mouseClicked(){
     if( !reactionStarted ){ balls[0].x = mouseX; balls[0].grow(); }
   }
   
   void draw() {
+    clear();
     for( Ball b: balls ){
       if( reactionStarted ){
-        
-      b.move();
+        if( b.state == 1){
+          b.grow();
+        }
+      }
+      else{
+        b.boundary();
+        b.move();
     }
-  }
+      
+    } 
   }
