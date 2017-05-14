@@ -40,23 +40,22 @@ class Ball{
    x = x + dx;
    y = y + dy; 
    fill(c);
+   //checks if ball should be dead or not: if it's dead, it shouldn't draw the ball at all
    if(state != 4) ellipse(x,y,rad,rad);
   }
   
-   void boundary(){
+  //keeps balls within boundaries of screen size and makes them bounce off walls
+  void boundary(){
      if(this.x > width ||this.x < 0){
-       dx *= -1;
-       /*if(dx > 10){dx = 5;}
-       if(dx < -10){dx = -5;}*/
+       //bounces back right or left if hits vertical walls
+       dx *= -1; 
        //in case the balls go to fast that they go off of the screen
        if(this.x > width){x = width - 1;}
        if(this.x < 0){x = 1;}
      } 
      if(this.y > height ||this.y < 0){
+       //bounces back down or up if hits horizontal walls
        dy *= -1;
-       /*-dy + random(1) - random(1);
-       if(dy > 10){dx = 7.5;}
-       if(dy < -10){dy = -7.5;}*/
        //in case the balls go to fast that they go off of the screen
        if(this.y > height){y = height - 1;}
        if(this.y < 0){y = 1;}
